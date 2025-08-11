@@ -1,0 +1,11 @@
+streamlit
+langchain-community
+python-dotenv
+pypdf
+langchain_chroma
+langchain_huggingface
+langchain-core
+sentence-transformers
+huggingface_hub[cli]
+unstructured
+unstructured[pdf]
