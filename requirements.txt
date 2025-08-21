@@ -1,4 +1,5 @@
 streamlit
+langchain
 langchain-community
 python-dotenv
 pypdf
@@ -9,3 +10,13 @@ sentence-transformers
 huggingface_hub[cli]
 unstructured
 unstructured[pdf]
+wikipedia
+langchain
+langchain-community
+python-dotenv
+langchain-huggingface
+langchain-groq
+langchain_chroma
+pypdf
+sentence-transformers
+grandalf
