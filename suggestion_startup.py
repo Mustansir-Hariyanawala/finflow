@@ -6,11 +6,11 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import PromptTemplate
 from langchain.schema.runnable import RunnablePassthrough, RunnableParallel
 from langchain.schema.output_parser import StrOutputParser
+from datetime import datetime
 import json
-
 load_dotenv()
 # Define the path to your JSON file
-file_path = 'temp.json'
+file_path = 'temp_2.json'
 PROMPT_SUMMARY = """
 You are an excellent 
 """
@@ -125,7 +125,7 @@ investor_template = PromptTemplate(
     input_variables=['string_evaluation']
 )
 
-GROQ_MODEL_NAME = "llama3-8b-8192"
+GROQ_MODEL_NAME = "openai/gpt-oss-20b"
 
 def process_data(data_list):
     if not data_list:
@@ -135,8 +135,7 @@ def process_data(data_list):
     model = ChatGroq(model=GROQ_MODEL_NAME)
     print("Extracting the evaluation and score from the temp.json")
     string_evaluation = "\n\n---\n\n".join([
-        f"Diligence Topic: {d['question']}\n\n"
-        f"Analyst Evaluation:\n{d['sentiment']}"
+        f"Analyst Evaluation:\n{d['key_points']}"
         for d in data_list
     ])
     print("Preparing the chain")
@@ -152,6 +151,8 @@ def process_data(data_list):
     print("Waiting for response")
     final_output = chain.invoke({'string_evaluation': string_evaluation})
     
+   
+
     print(f"""
           company suggestions:
           {final_output['suggestion']}
@@ -159,10 +160,57 @@ def process_data(data_list):
           investor side report:
           {final_output['final_report']}
           """) 
+    
+    return final_output
 
+def store_in_file(final_output):
+    # (Previous code from your process_data function remains the same)
+    
+    # --- NEW: WRITE TO TWO SEPARATE MARKDOWN FILES ---
+    
+    # 1. Prepare and save the company suggestions report
+    company_suggestions_content = f"""
+    # Suggestions for PowerLight Dynamics
+
+    * **Date Generated:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+    * **Report Version:** v1.5.43
+
+    ---
+
+    This report outlines critical flaws and actionable recommendations for the company to improve its financial documentation and processes.
+
+    {final_output['suggestion']}
+    """
+    company_file_name = "company_suggestions.md"
+    with open(company_file_name, "w", encoding="utf-8") as f:
+        f.write(company_suggestions_content)
+    print(f"\n✅ Successfully saved company suggestions to '{company_file_name}'")
+
+    # 2. Prepare and save the investor report
+    investor_report_content = f"""
+    # Due Diligence Report for the Investment Committee
+
+    * **Date Generated:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+    
+
+    ---
+
+    This is the comprehensive internal report synthesizing all findings into a final investment recommendation.
+
+    {final_output['final_report']}
+    """
+    investor_file_name = "investor_report.md"
+    with open(investor_file_name, "w", encoding="utf-8") as f:
+        f.write(investor_report_content)
+    print(f"✅ Successfully saved investor report to '{investor_file_name}'")
+    
+    
+    
 def main():
     data_list = load_json()
-    process_data(data_list)
+    final_data = process_data(data_list)
+    store_in_file(final_data)
+    
 
     
 if __name__ == '__main__':

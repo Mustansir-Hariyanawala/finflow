@@ -201,6 +201,32 @@ PROMPT_TEMPLATE_SENTIMENT = """
     Begin your analysis now.
 """
 
+PROMPT_TEMPLATE_DISTILLER = """
+You are a ruthless financial data distiller. Your only job is to take a verbose due diligence memo and extract the most critical, actionable insights into a hyper-condensed format. Eliminate all filler, introductions, and conversational language.
+
+**Original Diligence Question:**
+{question}
+
+**Full Analyst Memo:**
+{sentiment}
+
+---
+**INSTRUCTIONS:**
+Your output must be an extremely concise summary. Use bullet points with terse, data-driven phrases, not full sentences. Capture the core risk, any missing data, and the final assessment.
+
+**FORMAT:**
+
+**Topic:** [A 5-7 word summary of the original question]
+- **Assessment:** [A 1-2 sentence conclusion from the memo.]
+- **Critical Risk(s):** [The single most important risk identified. Quantify if possible.]
+- **Missing Data:** [The key missing document or data point.]
+- **Score:** [The score provided in the original evaluation.]
+
+---
+
+Begin your distillation now.
+"""
+
 Role_Lawyer = "You are a highly skilled and experienced corporate lawyer specializing in financial due diligence. Your task is to analyze the provided financial documents and answer a series of specific questions.\n\n**Your Role:**\n\nYou are to act as a legal and financial expert. Your responses should be:\n\n* **Accurate and Factual:** Base your answers *solely* on the information contained within the provided documents retrieved by the RAG model.\n* **Clear and Concise:** Provide direct and to-the-point answers. Avoid jargon where possible, but use precise legal and financial terminology when necessary.\n* **Professional in Tone:** Maintain a formal and analytical tone at all times.\n* **Cautious and Principled:** If the provided documents do not contain the information needed to answer a question, you must explicitly state that. Do not make assumptions or use any external knowledge.\n\n**Instructions:**\n\n1.  **Analyze the context:** Carefully review the provided financial documents (the \"context\") to understand the company's financial situation.\n2.  **Answer the Question:** For each question, formulate a response based *only* on the information present in the context.\n3.  **Cite Your Source (if applicable):** When you provide a specific data point or piece of information, you can (but are not required to) mention the document or section where you found it.\n4.  **Handle Missing Information:** If the answer to a question cannot be found in the provided context, you MUST respond with: \"The provided documents do not contain sufficient information to answer this question.\"\n\n**Example Interaction:**\n\n**Question:** What was the company's total revenue for the fiscal year 2023?\n\n***(Model analyzes the provided financial statements)***\n\n**Your Answer:** The company's total revenue for the fiscal year 2023 was $15.2 million, as stated in the \"Consolidated Statement of Operations.\"\n\n**Question:** What is the CEO's opinion on the current market trends?\n\n***(Model finds no information about the CEO's opinions in the documents)***\n\n**Your Answer:** The provided documents do not contain sufficient information to answer this question.\n\nYou will now be given a series of questions and the relevant financial documents. Proceed with your analysis." 
 
 
@@ -297,7 +323,7 @@ def process_questions(processed_data: list[str]):
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE_RETRIEVER)
     evaluator_prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE_WHY)
     sentiment_prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE_SENTIMENT)
-
+    summary_prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE_DISTILLER)
     # --- ✨ 2. UPDATE CHAIN DEFINITIONS ✨ ---
     generation_chain = (
         RunnablePassthrough.assign(
@@ -308,31 +334,24 @@ def process_questions(processed_data: list[str]):
         )
     )
 
-    # generation_chain = (
-    #     RunnablePassthrough.assign(
-    #         # Pipe the retriever output into format_docs
-    #         answer=(lambda x: x["question"]) | retriever | format_docs) | prompt_template | model | StrOutputParser()
-    # )
     
     evaluate_chain = (
         RunnablePassthrough.assign(
             # Pipe the retriever output into format_docs
-            context2=(lambda x: x["question"]) | retriever1 | format_docs
+            context2=(lambda x: x["answer"]) | retriever1 | format_docs
         )
         | RunnablePassthrough.assign(
             answer2=(evaluator_prompt | model | StrOutputParser())
         )
     )
 
-    # evaluate_chain = (
-    #     RunnablePassthrough.assign(
-    #         # Pipe the retriever output into format_docs
-    #         answer2=(lambda x: x["question"]) | retriever1 | format_docs | evaluator_prompt | model | StrOutputParser())
-    # )
+    summary_chain = summary_prompt | model | StrOutputParser()
     
     final_chain = generation_chain | evaluate_chain | RunnablePassthrough.assign(
         sentiment = sentiment_prompt | model | StrOutputParser()
-    ) 
+    ) | RunnablePassthrough.assign(
+        key_points=summary_chain
+    )
 
     final_chain.get_graph().print_ascii()
     i = 1
@@ -340,10 +359,10 @@ def process_questions(processed_data: list[str]):
         print(f"\n⏳ Generating response with Groq for  Q{i}...")
         response_dict = final_chain.invoke({"question": item})
         
-        print("\n" + "="*50 + "\n✅ Response Dictionary:")
-        # Now the 'context' keys will hold simple strings, not Document objects
-        print(response_dict) 
-        print("="*50 + "\n")
+        # print("\n" + "="*50 + "\n✅ Response Dictionary:")
+        # # Now the 'context' keys will hold simple strings, not Document objects
+        # print(response_dict) 
+        # print("="*50 + "\n")
         i += 1
         new_processed_data.append(response_dict)
 
@@ -365,7 +384,7 @@ def main():
     """
     login_to_huggingface() 
     processed_answers = process_questions(financial_due_diligence_questions)
-    export_to_json(processed_answers, output_file="temp.json")
+    export_to_json(processed_answers, output_file="temp_2.json")
 
     # Write the updated data to the output JSON file
     
