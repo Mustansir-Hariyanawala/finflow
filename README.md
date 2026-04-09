@@ -48,23 +48,29 @@ Evaluation metrics:
 </p>
 <p align="center"><strong>Figure 1.</strong> End-to-end research pipeline for Semantic Regression-based EPS forecasting.</p>
 
+### Top-down EPS formulation
+<p align="center">
+	<img src="Top_Down_Approach.jpeg" alt="Top-down approach formulae for EPS forecasting" width="900" />
+</p>
+<p align="center"><strong>Figure 2.</strong> Top-down analytical formulae used in our EPS forecasting reasoning flow.</p>
+
 ### Evaluation outputs
 The following three plots are the current evaluation result artifacts (error_1, error_2, error_3 set).
 
 <p align="center">
 	<img src="Model_Research/Results/group1_errors.png" alt="error_1 - Error Analysis" width="850" />
 </p>
-<p align="center"><strong>Figure 2.</strong> Absolute error-oriented view used to inspect model miss magnitude across samples.</p>
+<p align="center"><strong>Figure 3.</strong> Absolute error-oriented view used to inspect model miss magnitude across samples.</p>
 
 <p align="center">
 	<img src="Model_Research/Results/group2_percentage.png" alt="error_2 - Percentage Analysis" width="850" />
 </p>
-<p align="center"><strong>Figure 3.</strong> Percentage-based analysis to compare error behavior across different EPS scales.</p>
+<p align="center"><strong>Figure 4.</strong> Percentage-based analysis to compare error behavior across different EPS scales.</p>
 
 <p align="center">
 	<img src="Model_Research/Results/group3_accuracy.png" alt="error_3 - Accuracy Analysis" width="850" />
 </p>
-<p align="center"><strong>Figure 4 (error_3).</strong> Accuracy-focused evaluation view, aligned with directional and forecast-quality interpretation.</p>
+<p align="center"><strong>Figure 5 (error_3).</strong> Accuracy-focused evaluation view, aligned with directional and forecast-quality interpretation.</p>
 
 ## Important Research Decisions
 ### RAG direction was evaluated and rejected
