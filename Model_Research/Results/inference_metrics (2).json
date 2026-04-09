@@ -1,0 +1,17 @@
+{
+  "run_summary": {
+    "total_samples": 669,
+    "accepted": 649,
+    "rejected": 20,
+    "skipped_no_gt": 8,
+    "acceptance_rate_pct": 97.01
+  },
+  "metrics": {
+    "MSE": 2159.218,
+    "MAE": 14.5764,
+    "MdAPE_pct": 44.01,
+    "MAAPE_pct": 49.19,
+    "Directional_Accuracy_pct": 58.23,
+    "DA_sample_count": 644
+  }
+}

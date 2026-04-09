@@ -1,0 +1,74 @@
+[
+  {
+    "index": 640,
+    "source_file": "WSTCSTPAPR.NS_RAW.csv",
+    "actual": 104.77,
+    "predicted": null,
+    "prev_eps": 142.62,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2024,wefirstneedtoanalyzetheYear-over-Year(YoY)growthratefrom2022to2023.Thegrowthratecanbecalculatedas:(48.95B-33.54B)/33.54B=15.41B/33.54B=0.46or46%.Giventhissignificantgrowth,wemightexpectaslightmoderationingrowthratefor2024,consideringpotentialmarketsaturationorincreasedcompetition.Let'sassumeagrowthrateof40%for2024.NextRevenue=CurrentRevenue*(1+GrowthRate)=48.95B*(1+0.40)=48.95B*1.40=68.53B.Step2:OperatingMarginHistoricalOperatingMarginfor",
+    "reject_reason": "Word 'Forecast' not found"
+  },
+  {
+    "index": 415,
+    "source_file": "TMB.NS_RAW.csv",
+    "actual": 74.68,
+    "predicted": null,
+    "prev_eps": 67.7,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2025,wefirstneedtoanalyzetheYear-over-Year(YoY)growthrateofthecompany'srevenue.-2023Revenue:27.23Billion-2022Revenue:26.27Billion-YoYGrowthRatefrom2022to2023:(27.23-26.27)/26.27=0.03or3%-2024Revenue:27.96Billion-YoYGrowthRatefrom2023to2024:(27.96-27.23)/27.23=0.03or3%Giventheconsistentgrowthrate,we'llassumeasimilar3%growthratefor2025.-NextRevenue=27.96*(1+0.03)=27.96*1.03=28.80BillionStep2:OperatingMarginHistoricalOperatingMargin:-2022:0/26.27",
+    "reject_reason": "Word 'Forecast' not found"
+  },
+  {
+    "index": 470,
+    "source_file": "UCOBANK.NS_RAW.csv",
+    "actual": 2.46,
+    "predicted": null,
+    "prev_eps": 1.4,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2025,wefirstneedtoanalyzetheYear-over-Year(YoY)growthrateofthecompany'srevenue.-2023Revenue:98.51Billion-2022Revenue:95.73Billion-GrowthRatefrom2022to2023:(98.51-95.73)/95.73=2.78/95.73=0.029or2.9%-2024Revenue:108.08Billion-2023Revenue:98.51Billion-GrowthRatefrom2023to2024:(108.08-98.51)/98.51=9.57/98.51=0.097or9.7%Giventheincreasinggrowthrate,let'sassumeagrowthrateof10.5%for2025,slightlyhigherthanthepreviousyear,consideringthetrend.-NextReven",
+    "reject_reason": "Word 'Forecast' not found"
+  },
+  {
+    "index": 73,
+    "source_file": "SBICARD.NS_RAW.csv",
+    "actual": 20.14,
+    "predicted": null,
+    "prev_eps": 25.37,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2025,wefirstneedtoanalyzetheYear-over-Year(YoY)growthrateofthecompany'srevenue.-2023Revenue:106.78Billion-2022Revenue:86.37Billion-GrowthRatefrom2022to2023:(106.78-86.37)/86.37=20.78/86.37=0.24or24%-2024Revenue:127.51Billion-2023Revenue:106.78Billion-GrowthRatefrom2023to2024:(127.51-106.78)/106.78=20.73/106.78=0.195or19.5%Giventhetrend,we'llassumeaslightlylowergrowthratefor2025duetopotentialmarketsaturationorincreasedcompetition,let'suse18%.-N",
+    "reject_reason": "Word 'Forecast' not found"
+  },
+  {
+    "index": 144,
+    "source_file": "SHRIRAMFIN.NS_RAW.csv",
+    "actual": 50.75,
+    "predicted": null,
+    "prev_eps": 39.14,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2025,wefirstneedtoanalyzetheYear-over-Year(YoY)growthrateofthecompany'srevenue.-2023Revenue:169.31Billion-2022Revenue:95.53Billion-YoYGrowthRatefrom2022to2023:(169.31-95.53)/95.53=73.78/95.53=0.773or77.3%-2024Revenue:190.83Billion-YoYGrowthRatefrom2023to2024:(190.83-169.31)/169.31=21.52/169.31=0.127or12.7%Giventhesignificantdecreaseingrowthratefrom2023to2024,wewillassumeamoderategrowthratefor2025,slightlyabovethelastyear'sgrowthrate,at15%.-Nex",
+    "reject_reason": "Word 'Forecast' not found"
+  },
+  {
+    "index": 622,
+    "source_file": "WENDT.NS_RAW.csv",
+    "actual": 197.43,
+    "predicted": null,
+    "prev_eps": 204.77,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2025,wefirstneedtoanalyzetheYear-over-Year(YoY)growthrateofthecompany'srevenue.-2023Revenue:2.08Billion-2022Revenue:1.77Billion-GrowthRatefrom2022to2023:(2.08-1.77)/1.77=0.17or17%-2024Revenue:2.25Billion-2023Revenue:2.08Billion-GrowthRatefrom2023to2024:(2.25-2.08)/2.08=0.08or8%Giventhetrend,we'llassumeamoderategrowthratefor2025,slightlyabovethelastyear'sgrowth,at9%.-NextRevenue=2.25Billion*(1+0.09)=2.25*1.09=2.45BillionStep2:OperatingMarginCal",
+    "reject_reason": "Word 'Forecast' not found"
+  },
+  {
+    "index": 206,
+    "source_file": "SONATSOFTW.NS_RAW.csv",
+    "actual": 15.28,
+    "predicted": null,
+    "prev_eps": 11.1,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2025,wefirstneedtoanalyzetheYear-over-Year(YoY)growthrateofthecompany'srevenue.-2023Revenue:74.47Billion-2022Revenue:55.52Billion-GrowthRatefrom2022to2023:(74.47-55.52)/55.52=18.65%-2024Revenue:86.10Billion-2023Revenue:74.47Billion-GrowthRatefrom2023to2024:(86.10-74.47)/74.47=15.57%Giventhetrend,let'sassumeaslightlylowergrowthratefor2025,consideringthepatternofdecreasinggrowthrates:12%.-NextRevenue=CurrentRevenue*(1+GrowthRate)=86.10*(1+0.12)=",
+    "reject_reason": "Word 'Forecast' not found"
+  },
+  {
+    "index": 616,
+    "source_file": "WELENT.NS_RAW.csv",
+    "actual": 23.3,
+    "predicted": null,
+    "prev_eps": 21.25,
+    "raw_output": "Analysis:Step1:RevenueAnalysisToforecasttherevenuefor2025,wefirstneedtoanalyzetheYear-over-Year(YoY)growthrateofthecompany'srevenue.-2023Revenue:27.02Billion-2022Revenue:13.36Billion-YoYGrowthRatefrom2022to2023:(27.02-13.36)/13.36=13.66/13.36=0.023or2.3%-2024Revenue:28.27Billion-YoYGrowthRatefrom2023to2024:(28.27-27.02)/27.02=1.25/27.02=0.046or4.6%Giventhefluctuationingrowthrates,we'llapplyamoderategrowthratefor2025,slightlyabovethelowergrowthrateof2.3%toaccountforpotentialmarketexpansion,let'su",
+    "reject_reason": "Word 'Forecast' not found"
+  }
+]
