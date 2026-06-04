@@ -5,6 +5,8 @@ This repository documents our ongoing research toward a publishable paper on EPS
 ## Project Focus
 The project predicts next-year EPS (Earnings Per Share) from three core financial statements: Income Statement, Balance Sheet, and Cash Flow Statement. The central hypothesis is that a reasoning-oriented LLM can model financial logic more effectively than purely numerical pipelines by performing step-by-step semantic analysis (Semantic Regression).
 
+RP Link: https://shorturl.at/WWtyO
+
 ## Current Status (What Is Done)
 ### 1. Problem framing finalized
 The objective is finalized as next-year EPS prediction for due diligence workflows, and the project direction is explicitly paper-first rather than product-first.
